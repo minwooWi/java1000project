@@ -1,3 +1,5 @@
+package javaPractice;
+
 import java.util.Scanner;
 
 public class Gugudan {
