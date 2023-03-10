@@ -1,7 +1,7 @@
 package acmicpc.study;
 
 import java.util.Arrays;
-import java.util.Scanner;q
+import java.util.Scanner;
 
 public class problem_2839 {
     public static void main(String[] args) {
