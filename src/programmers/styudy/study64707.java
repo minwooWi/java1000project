@@ -1,5 +1,7 @@
 package programmers.styudy;
 
+import java.util.stream.*;
+
 public class study64707 {
     public static int solution(int storey) {
         return elevator(storey);
