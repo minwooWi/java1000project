@@ -4,34 +4,27 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class topKFrequent {
-    public static List<Integer> solution(int[] nums, int k) {
-        List<Integer>[] bucket = new List[nums.length + 1];
-        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+    public static int[] solution(int[] nums, int k) {
+        //1. Map Key:Value 형태로 빈도수 저장한다.
+        //2. 저장한 빈도수 순서대로 heap 저장
+        //3. 저장한 heap k 크기가 만큼 반환
 
-        for (int n : nums) {
-            frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : nums){ map.put(num, map.getOrDefault(num, 0) + 1); }
+
+        Queue<Integer> heap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
+        for(int key : map.keySet()){ heap.add(key); }
+
+        int[] ans = new int[k];
+        for(int i = 0; i < k; i++){
+            ans[i] = heap.poll();
         }
 
-        for (int key : frequencyMap.keySet()) {
-            int frequency = frequencyMap.get(key);
-            if (bucket[frequency] == null) {
-                bucket[frequency] = new ArrayList<>();
-            }
-            bucket[frequency].add(key);
-        }
-
-        List<Integer> res = new ArrayList<>();
-
-        for (int pos = bucket.length - 1; pos >= 0 && res.size() < k; pos--) {
-            if (bucket[pos] != null) {
-                res.addAll(bucket[pos]);
-            }
-        }
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{4,1,-1,2,-1,2,3} , 2));
+        System.out.println(Arrays.toString(solution(new int[]{4, 1, -1, 2, -1, 2, 3}, 2)));
 
     }
 }
