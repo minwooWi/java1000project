@@ -13,6 +13,7 @@ public class productExceptSelf {
             //res[2] = res[1] * nums[1] = 1*2;
             //res[3] = res[2] * nums[2] = 2*3;
         }
+        //res[i]에는 이전 요소의 값인 res[i-1]에 현재 요소의 이전 값을 곱한 결과인 res[i-1] * nums[i-1]을 저장합니다.
         //반복문을 한번순회하면서 왼쪽에 있는 원소의 곱을 각 인덱스에 저장시킨다.
 
         int right = 1;
